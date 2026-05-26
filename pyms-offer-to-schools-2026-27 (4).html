@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plymouth Youth Music Service – Offer to Schools 2026–27</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --teal:       #2d7060;
+      --teal-dark:  #1e4f44;
+      --teal-light: #e8f4f0;
+      --orange:     #d45c2a;
+      --orange-light: #fdf0ea;
+      --cream:      #faf8f4;
+      --text:       #1a1a1a;
+      --text-muted: #4a4a4a;
+      --border:     #c8dbd6;
+      --white:      #ffffff;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--cream);
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--orange); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Site header ── */
+    .site-header {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .site-header .org-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .site-header .doc-title {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 500;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.35rem 1.1rem;
+      border-radius: 100px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Nav ── */
+    .main-nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .main-nav a {
+      display: block;
+      padding: 0.85rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .main-nav a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+    /* ── Main content ── */
+    main { padding: 3rem 0 4rem; }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 4rem;
+    }
+    .section-inner {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+    .section-header {
+      background: var(--teal);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+    }
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.15;
+    }
+    .section-header .badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+    }
+    .section-body { padding: 2rem; }
+
+    /* ── Welcome ── */
+    .welcome-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--teal-dark);
+      border-left: 4px solid var(--orange);
+      padding-left: 1.25rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .welcome-byline {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Two-col prose ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── Key info + benefits grid ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+
+    .info-card {
+      background: var(--teal-light);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .info-card h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 0.75rem;
+    }
+    .info-card dl { display: grid; gap: 0.5rem; }
+    .info-card dt { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .info-card dd { font-size: 0.9rem; color: var(--text-muted); margin-left: 0; }
+
+    .benefits-card {
+      background: var(--orange-light);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .benefits-card h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .benefits-list { list-style: none; display: grid; gap: 0.65rem; }
+    .benefits-list li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .benefits-list li::before {
+      content: "✦";
+      color: var(--orange);
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      margin-top: 0.15rem;
+    }
+    .benefit-title { font-weight: 600; color: var(--text); display: block; }
+
+    /* ── Summary callout ── */
+    .summary-callout {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ── Pricing table ── */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .pricing-table caption {
+      text-align: left;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--teal-dark);
+      padding-bottom: 0.75rem;
+    }
+    .pricing-table th {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .pricing-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .pricing-table tr:nth-child(even) td { background: var(--teal-light); }
+    .pricing-table .service-name { font-weight: 600; color: var(--teal-dark); }
+    .pricing-table .price { font-weight: 700; color: var(--orange); white-space: nowrap; }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      background: var(--teal-light);
+      border-radius: var(--radius);
+    }
+    .contact-item .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .contact-item a, .contact-item span {
+      font-size: 0.88rem;
+      color: var(--text);
+      word-break: break-all;
+    }
+    .contact-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--teal-dark);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    .site-footer p + p { margin-top: 0.4rem; }
+    .site-footer a { color: rgba(255,255,255,0.9); }
+
+    /* ── Prose helpers ── */
+    p + p { margin-top: 0.85rem; }
+    .section-body > p { color: var(--text-muted); }
+    ul.disc { padding-left: 1.25rem; color: var(--text-muted); }
+    ul.disc li + li { margin-top: 0.3rem; }
+
+    /* ── Highlight pill ── */
+    .highlight {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Header ── -->
+  <header class="site-header" role="banner">
+    <p class="org-name">Plymouth Youth Music Service</p>
+    <span class="doc-title">Offer to Schools 2026–27</span>
+  </header>
+
+  <!-- ── Navigation ── -->
+  <nav class="main-nav" aria-label="Page sections">
+    <ul>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#epic">EPIC</a></li>
+      <li><a href="#isg">ISG</a></li>
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#popups">Pop-Up Concerts</a></li>
+      <li><a href="#live">Live Performance</a></li>
+      <li><a href="#advice">Advice</a></li>
+      <li><a href="#ensembles">Ensembles</a></li>
+      <li><a href="#instruments">Instruments</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Welcome -->
+      <section class="section" id="welcome" aria-labelledby="welcome-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="welcome-h">Welcome to PYMS</h2>
+          </div>
+          <div class="section-body">
+            <p class="welcome-quote">"I am delighted to introduce our full offer to schools for the 26/27 academic year."</p>
+            <p class="welcome-byline">— Jozzy Mudzingwa, Music Service Lead</p>
+
+            <div class="two-col">
+              <div>
+                <p>This has been an exciting year for our music service, as we have welcomed a number of new schools and continued to expand our reach, providing more children and young people with opportunities to engage in music. We recognise, however, the ongoing financial pressures faced by both schools and music services, and we remain committed to reviewing our offer to ensure it continues to provide value and affordability.</p>
+                <p>As part of this review, we have made the difficult decision to reduce the subsidy for our <strong>"Everyone Plays In Class"</strong> programme (formerly known as First Access). Schools will now be required to contribute an annual fee of <strong>£800 per academic year</strong>, with the rest subsidised by the music service. Despite this change, our pricing remains below the national average, reflecting our commitment to keeping music education accessible for all schools in Plymouth.</p>
+                <p>From <strong>September 2026</strong>, parents will be able to book individual and small group lessons directly through the music service website, significantly reducing administrative demands on schools.</p>
+              </div>
+              <div>
+                <p>Following successful trials over recent months, our music technology offer is now underway. This includes tailored DJ workshops and peripatetic teaching for individuals and small groups. As we continue to develop this area, availability will be limited — we encourage early booking to secure sessions.</p>
+                <p>PYMS continues to share and reinforce the government's commitments to ensuring every child has access to high-quality music provision. This includes opportunities to sing, play instruments, create music collaboratively, and progress further where appropriate.</p>
+                <p>In response, we will be placing increased focus on developing clear musical pathways for pupils, including ensembles, performance opportunities, and progression routes both within schools and the wider community.</p>
+                <p>We kindly encourage you to submit your instrument preferences for September as early as possible to help avoid waiting lists, and to follow our social media channels for updates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EPIC -->
+      <section class="section" id="epic" aria-labelledby="epic-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="epic-h">EPIC — Everybody Plays In Class</h2>
+            <span class="badge">KS2 · Formerly First Access</span>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              Whole class instrumental tuition for KS2 pupils. A PYMS tutor will plan and teach the sessions, in collaboration with the class teacher where appropriate. SEND provision is included.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>30 sessions per academic year, 60 minutes per lesson</dd>
+                  <dt>Cost</dt>
+                  <dd>£800 per class per year (remaining costs subsidised by the music service)</dd>
+                  <dt>Group size</dt>
+                  <dd>One class, up to 32 pupils</dd>
+                  <dt>Instruments available</dt>
+                  <dd>Brass, Clarinet, Djembe, Gamelan, Guitar, Samba, Steel Pans (Jumbie Jams), Strings, Taiko, Ukulele, and more</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Planning</span>Tailored planning session between a PYMS music tutor and the class teacher</span></li>
+                  <li><span><span class="benefit-title">Curriculum integration</span>Ongoing specialist advice including music curriculum guidance and signposting</span></li>
+                  <li><span><span class="benefit-title">Range of instruments</span>Option to change instruments bi-annually, subject to availability</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ISG -->
+      <section class="section" id="isg" aria-labelledby="isg-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="isg-h">ISG — Individual &amp; Small Group Tuition</h2>
+            <span class="badge">KS2+</span>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              Lessons for individuals or small groups of children learning the same instrument, led by an expert PYMS tutor. SEND-experienced tutors are available to support all learners.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>30 sessions per year (recommended 30 minutes per session)</dd>
+                  <dt>Cost</dt>
+                  <dd>£36 per hour. 50% of fees for children receiving Free School Meals (FSM) is covered by the school.</dd>
+                  <dt>Group size</dt>
+                  <dd>Individual or small group (maximum 4 pupils)</dd>
+                  <dt>Instruments available</dt>
+                  <dd>Brass, DJ Skills, Guitar, Keyboard, Percussion, Strings, Woodwind, and more</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Advanced learning</span>Pupils get more contact time with highly-trained tutors</span></li>
+                  <li><span><span class="benefit-title">Flexibility</span>Sessions can be delivered during school hours, at lunchtime, or after school</span></li>
+                  <li><span><span class="benefit-title">Small group setting</span>A calmer, more focused environment for pupils</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Music Workshops -->
+      <section class="section" id="workshops" aria-labelledby="workshops-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="workshops-h">Music Workshops</h2>
+            <span class="badge">KS2–KS5</span>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              One-off workshops tailored to fit your curriculum, offering pupils the chance to try multiple instruments. SEND-specific equipment is available. Designed to inspire and engage pupils with music, potentially for the first time.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>Half-day or full-day workshops in schools and community settings</dd>
+                  <dt>Cost</dt>
+                  <dd>Half-day: £175 · Full-day: £325</dd>
+                  <dt>Group size</dt>
+                  <dd>Up to 30 pupils, dependent on the type of workshop</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Curriculum integration</span>Works alongside existing music provision to support delivery of government targets</span></li>
+                  <li><span><span class="benefit-title">Range of instruments</span>Pupils can try multiple instruments across different instrument families</span></li>
+                  <li><span><span class="benefit-title">Fun &amp; dynamic</span>Emphasis on learning new skills and enjoying music</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pop-Up Concerts -->
+      <section class="section" id="popups" aria-labelledby="popups-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="popups-h">Pop-Up Concerts</h2>
+            <span class="badge">KS2–KS5</span>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              A surprise, informal, close-up music performance at your school — designed to be engaging, interactive, and inspiring for all pupils. These live performances can take place at any time during the school day, including break times and lunchtimes.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>Up to 45 minutes</dd>
+                  <dt>Cost</dt>
+                  <dd><span class="highlight">1 FREE</span> pop-up per year. Additional pop-ups subsidised at £45 per musician.</dd>
+                  <dt>Location</dt>
+                  <dd>Can take place anywhere in school. Highly interactive, focused on creating a fun and engaging atmosphere.</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Inspiration and aspiration</span>Sparks interest in learning an instrument and pursuing musical goals</span></li>
+                  <li><span><span class="benefit-title">Flexible timings</span>Deliverable at a convenient time that best suits your school</span></li>
+                  <li><span><span class="benefit-title">Engaging and exciting</span>Highly interactive and focused on creating a fun atmosphere</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Performance -->
+      <section class="section" id="live" aria-labelledby="live-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="live-h">Live Performance</h2>
+            <span class="badge">KS2–KS5</span>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              A live musical experience for pupils and staff — more formally organised than a Pop-Up Concert, and most likely to take place during a school assembly.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>Up to 45 minutes</dd>
+                  <dt>Cost</dt>
+                  <dd>£100</dd>
+                  <dt>Group size</dt>
+                  <dd>Whole class or whole school. Best delivered during a school assembly.</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Professional musicians</span>Pupils hear music delivered by highly skilled PYMS tutors</span></li>
+                  <li><span><span class="benefit-title">Engaging and exciting</span>Each performance is highly interactive and focused on fun</span></li>
+                  <li><span><span class="benefit-title">Impact time</span>Quickly introduces pupils to diverse musical styles and traditions</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Specialist Advice -->
+      <section class="section" id="advice" aria-labelledby="advice-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="advice-h">Specialist Advice &amp; Consultation</h2>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              Specialist advice and support for teachers in singing, curriculum, and co-curricular music, as well as bespoke in-school staff training.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Cost</dt>
+                  <dd>Half-day: £150 · Full-day: £300</dd>
+                  <dt>Services offered</dt>
+                  <dd>
+                    <ul class="disc">
+                      <li>Curriculum integration and support</li>
+                      <li>Advice for SEND and inclusive practice</li>
+                      <li>Teacher training</li>
+                      <li>Singing and composition</li>
+                      <li>Music observations</li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Expert guidance</span>Music consultants with wide experience in guiding your music curriculum</span></li>
+                  <li><span><span class="benefit-title">Music Development Plan support</span>Direct support with your MDP</span></li>
+                  <li><span><span class="benefit-title">Flexibility</span>Tailored sessions delivered on a rolling or one-off basis</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ensembles -->
+      <section class="section" id="ensembles" aria-labelledby="ensembles-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="ensembles-h">Ensembles &amp; Group Music-Making</h2>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              Instrument and singing groups for children with past musical experience. Opportunities for live performances including orchestras and competitions.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Cost</dt>
+                  <dd><span class="highlight">Free</span> for pupils to join</dd>
+                  <dt>Timing</dt>
+                  <dd>Usually after school</dd>
+                  <dt>Current offer</dt>
+                  <dd>Please see the <a href="https://plymouthyouthmusic.com">PYMS website</a> for current ensembles. New ensembles will be added for the 2026–27 academic year.</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Free to join</span>No cost to pupils or schools</span></li>
+                  <li><span><span class="benefit-title">Performances</span>Pupils can perform in front of large audiences at major events in Plymouth and beyond</span></li>
+                  <li><span><span class="benefit-title">Making friends</span>A chance to meet new people and build friendships through music</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instruments -->
+      <section class="section" id="instruments" aria-labelledby="instruments-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="instruments-h">Instrument Delivery &amp; Collection</h2>
+          </div>
+          <div class="section-body">
+            <div class="summary-callout">
+              PYMS provides instruments as part of the EPIC package, delivering to and collecting from schools and academy trusts across Plymouth. Schools can also loan a class set of instruments from Devon Music Education Hub (DMEH) by completing a loan application form on the DMEH website.
+            </div>
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Key Information</h3>
+                <dl>
+                  <dt>Delivery &amp; collection</dt>
+                  <dd>Free as part of EPIC and ISG provision</dd>
+                  <dt>Self-collection</dt>
+                  <dd>Free</dd>
+                  <dt>Extra trips</dt>
+                  <dd>£50</dd>
+                </dl>
+              </div>
+              <div class="benefits-card">
+                <h3>Benefits</h3>
+                <ul class="benefits-list">
+                  <li><span><span class="benefit-title">Cost effective</span>Funded instruments for EPIC and ISG provision</span></li>
+                  <li><span><span class="benefit-title">Less admin</span>PYMS takes care of all logistics, reducing strain on your admin staff</span></li>
+                  <li><span><span class="benefit-title">Minimal storage needed</span>Instruments can be moved at the end of term to free up storage space</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Summary -->
+      <section class="section" id="pricing" aria-labelledby="pricing-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="pricing-h">Summary of Charges</h2>
+          </div>
+          <div class="section-body">
+            <div style="overflow-x:auto;">
+              <table class="pricing-table">
+                <caption>All prices shown are for the 2026–27 academic year</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Service</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Key details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="service-name">EPIC (Everybody Plays In Class)</td>
+                    <td class="price">£800/year</td>
+                    <td>30 sessions · 1 hour each · Up to 32 pupils per class</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">ISG (Individual &amp; Small Group Tuition)</td>
+                    <td class="price">£36/hour</td>
+                    <td>Max 4 pupils · 50% FSM subsidy covered by school</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Music Workshops</td>
+                    <td class="price">£175 / £325</td>
+                    <td>Half-day / Full-day · Up to 30 pupils</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Pop-Up Concerts</td>
+                    <td class="price">1 free, then £45/musician</td>
+                    <td>Up to 45 minutes</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Live Performance</td>
+                    <td class="price">£100</td>
+                    <td>Up to 45 minutes · Whole class or whole school</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Specialist Advice &amp; Consultation</td>
+                    <td class="price">£150 / £300</td>
+                    <td>Half-day / Full-day</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Ensemble Groups</td>
+                    <td class="price">Free</td>
+                    <td>Usually after school</td>
+                  </tr>
+                  <tr>
+                    <td class="service-name">Instrument Delivery &amp; Collection</td>
+                    <td class="price">Free</td>
+                    <td>Included with EPIC &amp; ISG · Extra trips £50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact" aria-labelledby="contact-h">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 id="contact-h">Contact Us</h2>
+          </div>
+          <div class="section-body">
+            <p>All children and young people should have equitable access to music, recognising and valuing their diverse backgrounds, identities, abilities, and support needs.</p>
+            <div class="contact-grid" style="margin-top:1.5rem;">
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">✉</span>
+                <div>
+                  <span class="label">Email</span>
+                  <a href="mailto:youthmusic@plymouth.gov.uk">youthmusic@plymouth.gov.uk</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">🌐</span>
+                <div>
+                  <span class="label">Website</span>
+                  <a href="https://plymouthyouthmusic.com" target="_blank" rel="noopener noreferrer">plymouthyouthmusic.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">📞</span>
+                <div>
+                  <span class="label">Phone</span>
+                  <a href="tel:+441752308672">01752 308672</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">📷</span>
+                <div>
+                  <span class="label">Instagram</span>
+                  <a href="https://instagram.com/plymouthyouthmusicservice" target="_blank" rel="noopener noreferrer">@plymouthyouthmusicservice</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">👥</span>
+                <div>
+                  <span class="label">Facebook</span>
+                  <a href="https://facebook.com/plymouthyouthmusicservice/" target="_blank" rel="noopener noreferrer">facebook.com/plymouthyouthmusicservice</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" role="contentinfo">
+    <p>Plymouth Youth Music Service</p>
+    <p>Supported using public funding by Arts Council England, the Department for Education, and Plymouth City Council, in partnership with Devon Music Education Hub.</p>
+    <p style="margin-top:0.75rem;font-size:0.8rem;opacity:0.6;">Accessible HTML version of the 2026–27 Offer to Schools document.</p>
+  </footer>
+
+</body>
+</html>
